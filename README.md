@@ -5,6 +5,10 @@ A simple utility for diffing in tests.
 
 `nimble install testdiff`
 
+---
+
+Tested on Nim versions 1.6, stable, and devel.
+
 ![Github Actions](https://github.com/geotre/testdiff/workflows/Github%20Actions/badge.svg)
 
 ## Usage
