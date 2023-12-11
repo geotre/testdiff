@@ -5,14 +5,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
+        nim:
+          - '1.6.x'
+          - 'stable'
+          - 'devel'
 
     runs-on: ${{ matrix.os }}
 
+    name: testdiff ${{ matrix.nim }} - ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: jiro4989/setup-nim-action@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-    - run: nimble test -y
-    - run: nimble test --gc:orc -y
+      - uses: actions/checkout@v3
+      - uses: jiro4989/setup-nim-action@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - run: nimble test -y
+      - run: nimble test --gc:orc -y
